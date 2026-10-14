@@ -1,0 +1,21 @@
+type shape = Square | Circle | Star
+
+type colored = label: int, color: int
+type shaped = label: int, shape: shape
+type coloredShaped = colored, shaped
+
+item: coloredShaped = (label = 7, color = 1, shape = Circle)
+
+readColor: (>colored) -> int
+readColor value = value.color
+
+apply x f = fun y -> f (x, y)
+add (n: int, m: int) = n + m
+addTwo = apply (n = 2) add
+answer = addTwo (m = 5)
+
+keep: (label: int, 'r) -> (label: int, 'r)
+keep value = value
+
+extra = (keep (label = 7, extra = 9)).extra
+color = readColor item

@@ -1,0 +1,5 @@
+packages: .
+
+repository hackage.haskell.org
+  url: https://hackage.haskell.org/
+  secure: True

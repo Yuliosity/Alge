@@ -1,0 +1,12 @@
+type list 'a = None | cons: (head: 'a, tail: list 'a)
+
+//map: (f: 'a -> 'b, list: list 'a) -> list 'b
+map (f, list) = match list with
+  | None -> None
+  | cons = xs -> cons = (head = f xs.head, tail = map (f = f, list = xs.tail))
+
+apply x f = fun y -> f (x, y)
+incAll = apply (f = fun x -> x + 1) map
+
+xs: list int = cons = (head = 4, tail = cons = (head = 2, tail = None))
+result = incAll (list = xs)

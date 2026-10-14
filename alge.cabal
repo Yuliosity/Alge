@@ -1,0 +1,29 @@
+cabal-version: 3.0
+name: alge
+version: 0.1.0.0
+synopsis: Reference interpreter for Alge
+license: NONE
+build-type: Simple
+
+common settings
+  default-language: GHC2021
+  ghc-options: -Wall
+  build-depends: base >=4.18 && <5, containers, mtl, megaparsec >=9.5 && <10
+
+library
+  import: settings
+  hs-source-dirs: src
+  exposed-modules: Alge, Alge.Syntax, Alge.Parser, Alge.Type, Alge.Infer, Alge.Eval
+
+executable alge
+  import: settings
+  hs-source-dirs: app
+  main-is: Main.hs
+  build-depends: alge
+
+test-suite alge-tests
+  import: settings
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  build-depends: alge, hspec >=2.11 && <3
